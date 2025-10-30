@@ -1,31 +1,42 @@
 import sys
-import random
-from PySide6 import QtCore, QtGui, QtWidgets
+from PySide6.QtWidgets import (
+        QApplication, QMainWindow, QWidget, QLabel,
+        QPushButton, QVBoxLayout, QHBoxLayout, QSpacerItem, QSizePolicy,
+        QToolBar
+)
+from PySide6.QtGui import QIcon, QAction
 
-class MyWidget(QtWidgets.QWidget):
+class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.setWindowTitle('DaisyPlayer')
+        self.resize(1300, 800)
 
-        self.hello = ["Michella was here", "and Silvester was here", "Hello", "From Romania"]
+        toolbar = QToolBar()
+        self.addToolBar(toolbar)
 
-        self.button = QtWidgets.QPushButton("Click me!")
-        self.text = QtWidgets.QLabel("Hello World", alignment=QtCore.Qt.AlignCenter)
+        toolbar.addAction(QAction(QIcon("icon.png"), "", self))
 
-        self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.addWidget(self.text)
-        self.layout.addWidget(self.button)
+        layout_left = QVBoxLayout()
+        self.button = QPushButton("Merge")
+        
+        layout_left.addWidget(self.button)
+        layout_left.addStretch()
 
-        self.button.clicked.connect(self.magic)
+        layout_main = QHBoxLayout()
+        layout_main.addLayout(layout_left)
+        layout_main.addItem(QSpacerItem(1000, 20, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-    @QtCore.Slot()
-    def magic(self):
-        self.text.setText(random.choice(self.hello))
+        central_widget = QWidget()
+        central_widget.setLayout(layout_main)
+
+        self.setCentralWidget(central_widget)
+
 
 if __name__ == "__main__":
-    app = QtWidgets.QApplication([])
+    app = QApplication(sys.argv)
 
-    widget = MyWidget()
-    widget.resize(800, 600)
-    widget.show()
+    window = MainWindow()
+    window.show()
 
     sys.exit(app.exec())
