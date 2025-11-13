@@ -5,6 +5,7 @@ from PySide6.QtWidgets import (
         QToolBar
 )
 from PySide6.QtGui import QIcon, QAction
+from PySide6.QtCore import QSize
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -13,6 +14,7 @@ class MainWindow(QMainWindow):
         self.resize(1300, 800)
 
         toolbar = QToolBar()
+        toolbar.setIconSize(QSize(48, 48))
         self.addToolBar(toolbar)
 
         toolbar.addAction(QAction(QIcon("icon.png"), "", self))
