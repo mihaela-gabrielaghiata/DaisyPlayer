@@ -1,2 +1,2 @@
 source venv/bin/activate
-python Main.py 
+python -m app.main

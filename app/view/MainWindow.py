@@ -1,4 +1,3 @@
-import sys
 from PySide6.QtWidgets import (
         QApplication, QMainWindow, QWidget, QLabel,
         QPushButton, QVBoxLayout, QHBoxLayout, QSpacerItem, QSizePolicy,
@@ -6,6 +5,8 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtGui import QIcon, QAction
 from PySide6.QtCore import QSize, Qt
+
+assets_path = 'app/assets'
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -20,23 +21,23 @@ class MainWindow(QMainWindow):
         toolbar = QToolBar()
         toolbar.setIconSize(QSize(48, 48))
         self.addToolBar(toolbar)
-        toolbar.setStyleSheet("background-color: #4C6FA5;")
+        toolbar.setStyleSheet('background-color: #4C6FA5;')
 
-        toolbar.addAction(QAction(QIcon("icons/icon.png"), "", self))
+        toolbar.addAction(QAction(QIcon(f'{assets_path}/icons/icon.png'), '', self))
 
         # -------------------------------
         # PLAYER TOOLBAR
         # -------------------------------
         media_toolbar = QToolBar()
         media_toolbar.setIconSize(QSize(48, 48))
-        media_toolbar.setStyleSheet("background-color: #7FB0FF;")
+        media_toolbar.setStyleSheet('background-color: #7FB0FF;')
 
         self.addToolBar(Qt.BottomToolBarArea, media_toolbar)
 
-        action_prev = QAction(QIcon("icons/back.png"), "Previous", self)
-        action_play = QAction(QIcon("icons/play.png"), "Play", self)
-        action_pause = QAction(QIcon("icons/pause.png"), "Pause", self)
-        action_next = QAction(QIcon("icons/next.png"), "Next", self)
+        action_prev = QAction(QIcon(f'{assets_path}/icons/back.png'), 'Previous', self)
+        action_play = QAction(QIcon(f'{assets_path}/icons/play.png'), 'Play', self)
+        action_pause = QAction(QIcon(f'{assets_path}/icons/pause.png'), 'Pause', self)
+        action_next = QAction(QIcon(f'{assets_path}/icons/next.png'), 'Next', self)
 
         media_toolbar.addAction(action_prev)
         media_toolbar.addAction(action_play)
@@ -47,7 +48,7 @@ class MainWindow(QMainWindow):
         # LEFT MENU
         # -------------------------------
         layout_left = QVBoxLayout()
-        self.button = QPushButton("Merge")
+        self.button = QPushButton('Merge')
         
         layout_left.addWidget(self.button)
         layout_left.addStretch()
@@ -57,9 +58,9 @@ class MainWindow(QMainWindow):
         # -------------------------------
         layout_right = QVBoxLayout()
 
-        label1 = QLabel("Element 1 în dreapta")
-        label2 = QLabel("Element 2 în dreapta")
-        buton_dreapta = QPushButton("Buton dreapta")
+        label1 = QLabel('Element 1 în dreapta')
+        label2 = QLabel('Element 2 în dreapta')
+        buton_dreapta = QPushButton('Buton dreapta')
 
         layout_right.addWidget(label1)
         layout_right.addWidget(label2)
@@ -74,17 +75,11 @@ class MainWindow(QMainWindow):
         layout_main.addLayout(layout_right, 4)
 
         central_widget = QWidget()
-        central_widget.setStyleSheet("background-color: #E7F1FF;")
+        central_widget.setStyleSheet('background-color: #E7F1FF;')
 
         central_widget.setLayout(layout_main)
 
         self.setCentralWidget(central_widget)
 
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
-
-    sys.exit(app.exec())
 
