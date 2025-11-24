@@ -7,6 +7,7 @@ from PySide6.QtCore import Qt
 from app.view.MainApp import MainApp
 from app.view.TopToolbar import TopToolbar
 from app.view.MediaToolbar import MediaToolbar
+from app.controller.Controller import Controller
 
 assets_path = 'app/assets'
 
@@ -34,7 +35,8 @@ class MainWindow(QMainWindow):
         # -------------------------------
         # PLAYER TOOLBAR
         # -------------------------------
-        media_toolbar = MediaToolbar()
+        controller = Controller.get_instance()
+        media_toolbar = MediaToolbar(controller)
         self.addToolBar(Qt.BottomToolBarArea, media_toolbar)
 
         # -------------------------------

@@ -3,29 +3,20 @@ from PySide6.QtWidgets import (
     QVBoxLayout, QLabel, QPushButton, QFrame, QHBoxLayout,
     QListWidget, QWidget, QListWidgetItem
 )
+from app.controller.Controller import Controller
+from app.services.PlayerService import PlayerService
 
 assets_path = 'app/assets'
 
 class RightMenu(QVBoxLayout):
     def __init__(self):
         super().__init__()
-        self.music_path = 'local_music/'
+        self.media_player = PlayerService.get_instance()
         self.set_home()
-
-    def load_songs(self):
-        allowed = (".mp3",)
-        songs = []
-
-        for file in os.listdir(self.music_path):
-            if file.lower().endswith(allowed):
-                full_path = os.path.join(self.music_path, file)
-                songs.append((file, full_path))
-
-        return songs
 
     def set_home(self):
         self.playlist_widget = QListWidget()
-        songs = self.load_songs()
+        songs = self.media_player.get_songs()
 
         for title, path in songs:
             item = QListWidgetItem()
@@ -50,3 +41,9 @@ class SongItem(QWidget):
 
         self.label = QLabel(title)
         layout.addWidget(self.label)
+
+        self.controller = Controller.get_instance()
+
+    def mousePressEvent(self, event):
+        self.controller.play_song_by_name(self.title)
+

@@ -1,38 +1,55 @@
-from PySide6.QtCore import QSize
+from PySide6.QtCore import QSize, Qt, Signal
 from PySide6.QtGui import QAction, QIcon
-from PySide6.QtWidgets import QToolBar, QPushButton
+from PySide6.QtWidgets import QToolBar, QPushButton, QSlider, QLabel
+
 
 assets_path = 'app/assets'
 
 class MediaToolbar(QToolBar):
-    def __init__(self):
+    def __init__(self, controller=None):
         super().__init__()
         self.setIconSize(QSize(48,48))
 
-        btn_prev = QPushButton()
-        btn_prev.setIcon(QIcon(f'{assets_path}/icons/back.png'))
-        btn_prev.setToolTip("Previous")
+        self.btn_prev = QPushButton()
+        self.btn_prev.setIcon(QIcon(f'{assets_path}/icons/back.png'))
+        self.btn_prev.setToolTip("Previous")
 
-        btn_play = QPushButton()
-        btn_play.setIcon(QIcon(f'{assets_path}/icons/play.png'))
-        btn_play.setToolTip("Play")
+        self.btn_play = QPushButton()
+        self.btn_play.setIcon(QIcon(f'{assets_path}/icons/play.png'))
+        self.btn_play.setToolTip("Play")
 
-        btn_pause = QPushButton()
-        btn_pause.setIcon(QIcon(f'{assets_path}/icons/pause.png'))
-        btn_pause.setToolTip("Pause")
+        self.btn_pause = QPushButton()
+        self.btn_pause.setIcon(QIcon(f'{assets_path}/icons/pause.png'))
+        self.btn_pause.setToolTip("Pause")
 
-        btn_next = QPushButton()
-        btn_next.setIcon(QIcon(f'{assets_path}/icons/next.png'))
-        btn_next.setToolTip("Next")
+        self.btn_next = QPushButton()
+        self.btn_next.setIcon(QIcon(f'{assets_path}/icons/next.png'))
+        self.btn_next.setToolTip("Next")
 
-        btn_next.setObjectName("media_toolbar_btn")
-        btn_play.setObjectName("media_toolbar_play")
-        btn_pause.setObjectName("media_toolbar_pause")
-        btn_prev.setObjectName("media_toolbar_prev")
+        self.slider = QSlider(Qt.Horizontal)
+        self.slider.setMinimum(0)
+        self.slider.setMaximum(100)
+        self.slider.setValue(0)
+        self.slider.setToolTip("Progress")
 
-        self.addWidget(btn_prev)
-        self.addWidget(btn_play)
-        self.addWidget(btn_pause)
-        self.addWidget(btn_next)
+        self.btn_next.setObjectName("media_toolbar_btn")
+        self.btn_play.setObjectName("media_toolbar_play")
+        self.btn_pause.setObjectName("media_toolbar_pause")
+        self.btn_prev.setObjectName("media_toolbar_prev")
+
+        self.addWidget(self.btn_prev)
+        self.addWidget(self.btn_play)
+        self.addWidget(self.btn_pause)
+        self.addWidget(self.btn_next)
+        self.addWidget(self.slider)
+
+        if controller is not None:
+            self.btn_play.clicked.connect(controller.toggle_play)
+            self.btn_pause.clicked.connect(controller.pause)
+            self.btn_next.clicked.connect(controller.next_song)
+            self.btn_prev.clicked.connect(controller.prev_song)
+
+            self.slider.sliderReleased.connect(lambda: controller.seek_by_percent(self.slider.value()))
+
 
 
