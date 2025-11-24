@@ -1,12 +1,10 @@
+from PySide6.QtGui import QGuiApplication
 from PySide6.QtWidgets import (
-    QMainWindow, QWidget, QLabel,
-        QPushButton, QVBoxLayout, QHBoxLayout
+    QMainWindow, QWidget
 )
 from PySide6.QtCore import Qt
 
-from app.view.LeftMenu import LeftMenu
 from app.view.MainApp import MainApp
-from app.view.RightMenu import RightMenu
 from app.view.TopToolbar import TopToolbar
 from app.view.MediaToolbar import MediaToolbar
 
@@ -16,12 +14,15 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle('DaisyPlayer')
-        self.resize(1300, 800)
+        screen = QGuiApplication.primaryScreen().availableGeometry()
+        width = screen.width()
+        height = screen.height()
+        self.resize(int(width * 0.85), int(height * 0.85))
 
         with open('app/view/stiluri/stil.qss','r') as f :
             qss=f.read()
 
-        self.setStyleSheet(qss)
+        #self.setStyleSheet(qss)
 
 
         # -------------------------------
