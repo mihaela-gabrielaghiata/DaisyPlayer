@@ -46,4 +46,5 @@ class SongItem(QWidget):
 
     def mousePressEvent(self, event):
         self.controller.play_song_by_name(self.title)
+    
 

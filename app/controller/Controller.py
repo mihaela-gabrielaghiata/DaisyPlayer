@@ -1,4 +1,6 @@
 from app.services.PlayerService import PlayerService
+from PySide6.QtWidgets import QSlider, QPushButton
+from PySide6.QtGui import QIcon
 
 class Controller:
     _instance = None
@@ -15,9 +17,18 @@ class Controller:
         Controller._instance = self
 
         self.player_service = PlayerService.get_instance()
+        self.play_ico = QIcon('app/assets/icons/play.png')
+        self.pause_ico = QIcon('app/assets/icons/pause.png')
+        self.state = 'play'
 
-    def toggle_play(self):
+    def toggle_play(self, btn: QPushButton):
         self.player_service.toggle_play()
+        if self.state == 'play':
+            self.state = 'pause'
+            btn.setIcon(self.pause_ico)
+        else:
+            self.state = 'play'
+            btn.setIcon(self.play_ico)
 
     def pause(self):
         self.player_service.pause()
@@ -29,18 +40,19 @@ class Controller:
         self.player_service.prev_song()
 
     def play_song_by_name(self, name):
-        self.player_service.play_song(name)
+        self.player_service.play(name)
 
     def get_song_list(self):
         return self.player_service.get_songs()
     
     def seek_by_percent(self, percent: float):
-        player = getattr(self.player_service, 'player', None)
-        if player is None:
-            return
-        dur = player.duration()
-        if not dur or dur <= 0:
-            return  # media not ready; ignore
-        percent = max(0.0, min(100.0, float(percent)))
-        target_ms = int(dur * (percent / 100.0))
-        player.setPosition(target_ms)
+        self.player_service.seek_by_percent(percent)
+
+    def set_song_slider(self, slider: QSlider):
+        self.slider = slider
+    
+    def set_song_position(self, position):     
+        if self.slider and self.slider.isSliderDown() == False:
+            self.slider.blockSignals(True)
+            self.slider.setValue(int(position * self.slider.maximum()))
+            self.slider.blockSignals(False) 
