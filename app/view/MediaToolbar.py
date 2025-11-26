@@ -71,6 +71,7 @@ class MediaToolbar(QToolBar):
         self.btn_next.setObjectName("media_toolbar_btn")
         self.btn_play.setObjectName("media_toolbar_play")
         self.btn_prev.setObjectName("media_toolbar_prev")
+        self.setObjectName("MediaToolBar")
 
         container = QWidget()
         layout = QVBoxLayout(container)

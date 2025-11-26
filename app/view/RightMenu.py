@@ -11,6 +11,8 @@ assets_path = 'app/assets'
 class RightMenu(QVBoxLayout):
     def __init__(self):
         super().__init__()
+
+        self.setObjectName('RightMenu')
         self.media_player = PlayerService.get_instance()
         self.set_home()
 
@@ -32,6 +34,8 @@ class RightMenu(QVBoxLayout):
 class SongItem(QWidget):
     def __init__(self, title, path):
         super().__init__()
+
+        self.setObjectName("SongItem")
 
         self.title = title
         self.path = path

@@ -45,6 +45,7 @@ class MainWindow(QMainWindow):
         layout_main = MainApp()
 
         central_widget = QWidget()
+        central_widget.setObjectName("CentralArea")
 
         central_widget.setLayout(layout_main)
 

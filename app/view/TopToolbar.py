@@ -10,4 +10,4 @@ class TopToolbar(QToolBar):
         super().__init__()
         self.setIconSize(QSize(48,48))
         self.addAction(QAction(QIcon(f'{assets_path}/icons/icon.png'),'', self))
-
+        self.setObjectName('TopToolbar')

@@ -1,54 +1,89 @@
-/* ----- GLOBAL ----- */
-QWidget {
-    background-color: #EAF3FF;
-    color: #1A1A1A;
-    font-family: 'Segoe UI';
+#CentralArea {
+    background: url("app/assets/icons/sheep-yellow.png");
+    background-position: center;
+    background-repeat: repeat;
 }
 
-/* ----- LABELS ----- */
-QLabel {
-    color: #1A1A1A;
-    font-size: 17px;
-}
-
-/* ----- TITLU DREAPTA ----- */
-#RightTitle {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* ----- BUTTONS ----- */
 QPushButton {
-    background-color: #CBE0FF;
-    border: none;
+    background-color: #A4D2C9;
+    border-radius: 15px;
     padding: 10px;
-    border-radius: 8px;
-    text-align: left;
+    font-weight: bold;
+    color: #3b2e1f;
 }
 
 QPushButton:hover {
-    background-color: #B5D0FF;
+    background-color: #91C2B7;
 }
 
-QPushButton:pressed {
-    background-color: #99C0FF;
+QSlider::groove:horizontal {
+    background: rgba(255,255,255,0.35);
+    height: 8px;
+    border-radius: 4px;
 }
 
-/* ------ SMALL BUTTONS (în linie) ------ */
-QPushButton#SmallButton {
-    padding: 6px 12px;   /* doar asta diferă */
+QSlider::handle:horizontal {
+    background: #ffe08a;
+    width: 18px;
+    height: 18px;
+    margin: -5px 0;
+    border-radius: 9px;
+}
+
+QListWidget {
+    background-color: #A4D2C9;
+    padding: 5px;
+    margin: 10px;
+}
+
+#SongItem {
+    background-color: #CDEAE5;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+#SongItem QLabel {
     font-size: 15px;
+    font-weight: 600;
+    color: #3b2e1f;
 }
 
-/* ----- TOOLBARS ----- */
-QToolBar {
-    background-color: #4C6FA5;
+#SongItem:hover {
+    background-color: #B8DCD3;
 }
 
-/* ----- WAVEFORM FRAME ----- */
-#WaveformFrame {
-    background-color: #FFFFFF;
+#TopToolbar {
+    background-color: #A4D2C9;
+    border: none;
+    padding: 6px;
+}
+
+#MediaToolBar {
+    background-color: #A4D2C9;
+    border: none;
+    padding: 6px;
+}
+
+#MediaToolBar QPushButton,
+#MediaToolBar QToolButton {
+    background-color: #F9E5BD;
     border-radius: 12px;
-    border: 2px solid #c3d6ee;
+    padding: 6px;
+}
+
+#MediaToolBar QSlider::groove:horizontal {
+    background: rgba(0,0,0,0.20);
+    height: 6px;
+    border-radius: 3px;
+}
+
+#MediaToolBar QSlider::handle:horizontal {
+    background: #FFF1D1;
+    width: 14px;
+    border-radius: 7px;
+}
+
+#RightMenu QVBoxLayout {
+    border: 20px solid black;
     padding: 20px;
 }
