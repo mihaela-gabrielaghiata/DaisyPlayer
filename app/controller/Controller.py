@@ -87,9 +87,10 @@ class Controller:
         artist = QMediaMetaData.Key.ContributingArtist
 
         if data.value(title):
-            text += data.stringValue(title)
+            text += f"<div>{data.stringValue(title)}</div>"
             if data.value(artist):
-                text += f"\nArtist: {data.stringValue(artist)}"
+                color = self.music_label.palette().color(self.music_label.foregroundRole())
+                text += f"\n<div style=\'color: rgba({color.red()}, {color.green()}, {color.blue()}, 150);\'>Artist: {data.stringValue(artist)}</div>"
         else:
             text += self.player_service.get_current_song_file_name()
 

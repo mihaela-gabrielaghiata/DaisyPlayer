@@ -54,11 +54,14 @@ class MediaToolbar(QToolBar):
         self.btn_repeat.setToolTip("Repeat")
         self.btn_repeat.setIconSize(QSize(30,30))
 
+        self.volume_icon = QIcon(f"{assets_path}/icons/volume.png")
+        self.muted_icon = QIcon(f"{assets_path}/icons/mute.png")
         self.btn_volume = QPushButton()
         self.btn_volume.setCheckable(True)
-        self.btn_volume.setIcon(QIcon(f"{assets_path}/icons/volume.png"))
+        self.btn_volume.setIcon(self.volume_icon)
         self.btn_volume.setToolTip("Volume")
-        self.btn_repeat.setIconSize(QSize(30, 30))
+        self.btn_volume.setIconSize(QSize(30, 30))
+        self.btn_volume.setObjectName("MuteBtn")
 
         self.slider_volume = ClickableSlider(Qt.Horizontal)
         self.slider_volume.setFixedWidth(150)
@@ -109,6 +112,7 @@ class MediaToolbar(QToolBar):
             self.btn_repeat.clicked.connect(lambda checked: controller.set_repeat(checked))
             self.btn_shuffle.clicked.connect(lambda checked: controller.toggle_shuffle(checked))
             self.btn_volume.clicked.connect(lambda checked: controller.toggle_volume(checked))
+            self.btn_volume.clicked.connect(lambda checked: self.btn_volume.setIcon(self.muted_icon) if checked else self.btn_volume.setIcon(self.volume_icon))
 
             self.slider.valueChanged.connect(lambda: controller.seek_by_percent(self.slider.value() / self.slider.maximum()))
             self.slider_volume.valueChanged.connect(controller.set_volume)
