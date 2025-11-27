@@ -71,6 +71,16 @@ QListWidget {
     padding: 6px;
 }
 
+#MediaToolBar QPushButton:hover
+{
+background-color: #FFDAB1;
+}
+
+#MediaToolBar QPushButton:checked
+{
+background-color: #FEC09B;
+}
+
 #MediaToolBar QSlider::groove:horizontal {
     background: rgba(0,0,0,0.20);
     height: 6px;
