@@ -65,6 +65,9 @@ class Controller:
     def set_volume(self, volume: int):
         self.player_service.set_volume(volume)
 
+    def toggle_volume(self, check: bool):
+        self.player_service.toggle_volume(check)
+
     def set_repeat(self, repeat: bool):
         self.player_service.set_repeat(repeat)
 
@@ -81,9 +84,12 @@ class Controller:
         data:QMediaMetaData = self.player_service.get_current_song_metadata()
         text = ""
         title = QMediaMetaData.Key.Title
+        artist = QMediaMetaData.Key.ContributingArtist
 
         if data.value(title):
             text += data.stringValue(title)
+            if data.value(artist):
+                text += f"\nArtist: {data.stringValue(artist)}"
         else:
             text += self.player_service.get_current_song_file_name()
 

@@ -122,6 +122,9 @@ class PlayerService:
     def set_volume(self, volume: int):
         self.audio_output.setVolume(volume / 100.0)
 
+    def toggle_volume(self, check: bool):
+        self.audio_output.setMuted(check)
+
     def set_repeat(self, repeat: bool):
         self.player.setLoops(QMediaPlayer.Infinite if repeat else QMediaPlayer.Loops(1))
 
