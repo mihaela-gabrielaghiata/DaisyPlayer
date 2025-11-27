@@ -1,7 +1,8 @@
-#CentralArea {
+QMainWindow {
     background: url("app/assets/icons/sheep-yellow.png");
     background-position: center;
     background-repeat: repeat;
+    background-color: #FFDDB1;
 }
 
 QPushButton {
@@ -36,36 +37,29 @@ QListWidget {
     margin: 10px;
 }
 
-#SongItem {
+#SongItem QWidget {
     background-color: #CDEAE5;
     border-radius: 15px;
     padding: 5px;
 }
 
-#SongItem QLabel {
+#SongItem QWidget {
     font-size: 15px;
     font-weight: 600;
     color: #3b2e1f;
 }
 
-#SongItem:hover {
+#SongItem QWidget:hover {
     background-color: #B8DCD3;
 }
 
-#TopToolbar {
-    background-color: #A4D2C9;
+QToolBar {
+    background-color:  #A4D2C9;
     border: none;
     padding: 6px;
 }
 
-#MediaToolBar {
-    background-color: #A4D2C9;
-    border: none;
-    padding: 6px;
-}
-
-#MediaToolBar QPushButton,
-#MediaToolBar QToolButton {
+#MediaToolBar QPushButton {
     background-color: #F9E5BD;
     border-radius: 12px;
     padding: 6px;
