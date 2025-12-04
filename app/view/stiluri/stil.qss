@@ -43,7 +43,8 @@ QSlider::sub-page:horizontal {
 QListWidget {
     background-color: #A4D2C9;
     padding: 5px;
-    margin: 10px;
+    margin: 5px;
+
 }
 
 #SongItem QWidget {
@@ -53,6 +54,7 @@ QListWidget {
     font-size: 15px;
     font-weight: 600;
     color: #3b2e1f;
+    height:200 px;
 }
 
 #SongItem QWidget:hover {

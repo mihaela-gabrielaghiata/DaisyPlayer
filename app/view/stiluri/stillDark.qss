@@ -57,12 +57,12 @@ QLabel{
     color:#FFF3D2
 }
 
-
 QListWidget {
     background-color: #2A2A3A;
     padding: 5px;
     margin: 10px;
     color: #EDEDED;
+
 }
 
 #SongItem QWidget {
@@ -117,4 +117,38 @@ QToolBar {
 #RightMenu QVBoxLayout {
     border: 20px solid #000000;
     padding: 20px;
+}
+
+#PlaylistWidget {
+    background-color: #2A2A3A;
+    color: #EDEDED;
+}
+
+/* Scrollbar */
+#PlaylistWidget QScrollBar:vertical {
+    background: #2A2A3A;
+    width: 12px;
+    margin: 2px;
+    border-radius: 6px;
+}
+
+#PlaylistWidget QScrollBar::handle:vertical {
+    background: #4E4E5E;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+#PlaylistWidget QScrollBar::handle:vertical:hover {
+    background: #5C5C6E;
+}
+
+#PlaylistWidget QScrollBar::add-page:vertical,
+#PlaylistWidget QScrollBar::sub-page:vertical {
+    background: #2A2A3A;
+}
+
+#PlaylistWidget QScrollBar::add-line:vertical,
+#PlaylistWidget QScrollBar::sub-line:vertical {
+    background: none;
+    height: 0;
 }

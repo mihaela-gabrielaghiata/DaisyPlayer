@@ -10,9 +10,11 @@ os.environ["QT_MEDIA_BACKEND"] = "ffmpeg"   # dacă ai ffmpeg
 if __name__ == "__main__":
 
     app = QApplication(sys.argv)
+    window = MainWindow()
     with open("app/view/stiluri/stillDark.qss", "r") as f:
         app.setStyleSheet(f.read())
-    window = MainWindow()
+
+
     window.show()
 
     sys.exit(app.exec())

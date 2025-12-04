@@ -18,6 +18,8 @@ class RightMenu(QVBoxLayout):
 
     def set_home(self):
         self.playlist_widget = QListWidget()
+        self.playlist_widget.setObjectName("PlaylistWidget")
+
         songs = self.media_player.get_songs()
 
         for title, path in songs:
