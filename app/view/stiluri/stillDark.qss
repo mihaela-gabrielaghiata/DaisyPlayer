@@ -5,8 +5,6 @@ QMainWindow {
     background-color: #0B121E;
 }
 
-
-
 QPushButton {
     background-color: #0F293C;
     border-radius: 15px;
@@ -33,7 +31,31 @@ QSlider::handle:horizontal {
     margin: -5px 0;
     border-radius: 9px;
 }
+#MediaToolBar QSlider::groove:horizontal {
+    background: transparent;
+    height: 6px;
+    border-radius: 3px;
+}
 
+#MediaToolBar QSlider::sub-page:horizontal {
+    background: #4E4E5E;     /* partea parcursă */
+    border-radius: 3px;
+}
+
+#MediaToolBar QSlider::add-page:horizontal {
+    background: #0B121E;     /* partea neparcursă */
+    border-radius: 3px;
+}
+
+#MediaToolBar QSlider::handle:horizontal {
+    background: #F3C86F;
+    width: 14px;
+    border-radius: 7px;
+}
+
+QLabel{
+    color:#FFF3D2
+}
 
 
 QListWidget {
