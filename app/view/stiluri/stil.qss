@@ -1,8 +1,12 @@
 QMainWindow {
-    background: url("app/assets/icons/sheep-yellow.png");
+    background: url("app/assets/background/sheep-yellow.png");
     background-position: center;
     background-repeat: repeat;
     background-color: #FFDDB1;
+}
+#Icon QPushButton{
+    background: url("app/assets/icons/icon.png");
+
 }
 
 QPushButton {

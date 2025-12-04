@@ -1,0 +1,98 @@
+QMainWindow {
+    background: url("app/assets/background/sheep-darkMode.png");
+    background-position: center;
+    background-repeat: repeat;
+    background-color: #0B121E;
+}
+
+
+
+QPushButton {
+    background-color: #0F293C;
+    border-radius: 15px;
+    padding: 10px;
+    font-weight: bold;
+    color: #FFF3D2;
+}
+
+QPushButton:hover {
+    background-color: #152F42;
+}
+
+
+QSlider::groove:horizontal {
+    background: rgba(255,255,255,0.25);
+    height: 8px;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background: #F3C86F;
+    width: 18px;
+    height: 18px;
+    margin: -5px 0;
+    border-radius: 9px;
+}
+
+
+
+QListWidget {
+    background-color: #2A2A3A;
+    padding: 5px;
+    margin: 10px;
+    color: #EDEDED;
+}
+
+#SongItem QWidget {
+    background-color: #3A3A4A;
+    border-radius: 15px;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #FFF3D2;
+
+}
+
+#SongItem QWidget:hover {
+    background-color: #4A4A5A;
+}
+
+
+QToolBar {
+    background-color: #2A2A3A;
+    border: none;
+    padding: 6px;
+}
+
+#MediaToolBar QPushButton {
+    background-color: #4E4E5E;
+    border-radius: 12px;
+    padding: 6px;
+    color: #EDEDED;
+}
+
+#MediaToolBar QPushButton:hover {
+    background-color: #5C5C6E;
+}
+
+#MediaToolBar QPushButton:checked {
+    background-color: #6A6A7E;
+}
+
+
+#MediaToolBar QSlider::groove:horizontal {
+    background: rgba(255,255,255,0.20);
+    height: 6px;
+    border-radius: 3px;
+}
+
+#MediaToolBar QSlider::handle:horizontal {
+    background: #F3C86F;
+    width: 14px;
+    border-radius: 7px;
+}
+
+#RightMenu QVBoxLayout {
+    border: 20px solid #000000;
+    padding: 20px;
+}

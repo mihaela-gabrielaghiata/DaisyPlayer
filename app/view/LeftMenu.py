@@ -10,15 +10,15 @@ class LeftMenu(QVBoxLayout):
 
         button_home= QPushButton('Acasa')
         button_home.setIcon(QIcon(f"{assets_path}/icons/home.png"))
-        button_home.setIconSize(QSize(24,24))
+        button_home.setIconSize(QSize(30,30))
 
         button_settings=QPushButton('Setari')
-        button_settings.setIcon(QIcon(f"{assets_path}/icons/settings.png"))
-        button_settings.setIconSize(QSize(24,24))
+        button_settings.setIcon(QIcon(f"{assets_path}/icons/setting.png"))
+        button_settings.setIconSize(QSize(30,30))
 
         button_playlist=QPushButton('Albume')
-        button_playlist.setIcon(QIcon(f"{assets_path}/icons/playlist1.png"))
-        button_playlist.setIconSize(QSize(24,24))
+        button_playlist.setIcon(QIcon(f"{assets_path}/icons/playlist.png"))
+        button_playlist.setIconSize(QSize(30,30))
 
         self.addWidget(button_home)
         self.addWidget(button_settings)
