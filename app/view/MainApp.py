@@ -8,8 +8,8 @@ class MainApp(QHBoxLayout):
         super().__init__()
         self.setSpacing(0)
 
-        layout_left = LeftMenu()
         layout_right = RightMenu()
+        layout_left = LeftMenu(layout_right)
 
         self.addLayout(layout_left, 1)
         self.addLayout(layout_right, 4)

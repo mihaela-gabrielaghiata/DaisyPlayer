@@ -1,4 +1,5 @@
 from app.services.PlayerService import PlayerService
+from app.services.PlaylistService import PlaylistService
 from PySide6.QtWidgets import QSlider, QPushButton, QLabel
 from PySide6.QtGui import QIcon
 from PySide6.QtMultimedia import QMediaMetaData
@@ -18,9 +19,13 @@ class Controller:
         Controller._instance = self
 
         self.player_service = PlayerService.get_instance()
+        self.playlist_service = PlaylistService.get_instance()
         self.play_ico = QIcon('app/assets/icons/play.png')
         self.pause_ico = QIcon('app/assets/icons/pause.png')
         self.state = 'play'
+
+    def get_songs(self):
+        return self.player_service.get_songs()
 
     def toggle_play(self):
         self.player_service.toggle_play()
@@ -100,3 +105,6 @@ class Controller:
             print("\n")
             print(text)
             print("\n")
+
+    def get_playlists(self):
+        return self.playlist_service.get_playlists()
