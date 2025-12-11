@@ -1,7 +1,7 @@
 import os
 from PySide6.QtWidgets import (
     QVBoxLayout, QLabel, QPushButton, QFrame, QHBoxLayout,
-    QListWidget, QWidget, QListWidgetItem
+    QListWidget, QWidget, QListWidgetItem, QCheckBox, QApplication
 )
 from app.controller.Controller import Controller
 from app.services.PlayerService import PlayerService
@@ -15,6 +15,7 @@ class RightMenu(QVBoxLayout):
         self.setObjectName('RightMenu')
         self.controller = Controller.get_instance()
         self.set_home()
+        self.theme = 'light'
 
     def set_home(self):
         self.clear_layout()
@@ -57,6 +58,34 @@ class RightMenu(QVBoxLayout):
             self.playlist_widget.setItemWidget(item, widget)
 
         self.addWidget(self.playlist_widget)
+
+    def set_settings(self):
+        self.clear_layout()
+        
+        label = QLabel("Settings")
+        label.setObjectName("SettingsTitle")
+        
+        mode = QCheckBox()
+        mode.setObjectName("DarkModeCheckbox")
+        if self.theme == 'dark':
+            mode.setChecked(True)
+        mode.stateChanged.connect(lambda state: self.set_app_theme(state == 2))
+
+        
+        self.addWidget(label)
+        self.addWidget(mode)
+
+    def set_app_theme(self, dark_mode: bool):
+        app = QApplication.instance()
+        if dark_mode:
+            with open('app/view/stiluri/stillDark.qss', 'r') as f:
+                app.setStyleSheet(f.read())
+                self.theme = 'dark'
+        else:
+            with open('app/view/stiluri/stil.qss', 'r') as f:
+                app.setStyleSheet(f.read())
+                self.theme = 'light'
+
 
 
 class SongItem(QWidget):

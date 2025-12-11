@@ -24,6 +24,7 @@ class LeftMenu(QVBoxLayout):
 
         button_home.clicked.connect(self.right_menu.set_home)
         button_playlist.clicked.connect(self.right_menu.set_playlists)
+        button_settings.clicked.connect(self.right_menu.set_settings)
 
         self.addWidget(button_home)
         self.addWidget(button_settings)
