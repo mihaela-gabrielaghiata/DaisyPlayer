@@ -8,14 +8,16 @@ from app.services.PlayerService import PlayerService
 
 assets_path = 'app/assets'
 
-class RightMenu(QVBoxLayout):
+class RightMenu(QWidget):
     def __init__(self):
         super().__init__()
 
         self.setObjectName('RightMenu')
         self.controller = Controller.get_instance()
+        self.layout = QVBoxLayout(self)
         self.set_home()
         self.theme = 'light'
+        
 
     def set_home(self):
         self.clear_layout()
@@ -33,11 +35,11 @@ class RightMenu(QVBoxLayout):
             self.playlist_widget.addItem(item)
             self.playlist_widget.setItemWidget(item, widget)
 
-        self.addWidget(self.playlist_widget)
+        self.layout.addWidget(self.playlist_widget)
     
     def clear_layout(self):
-        while self.count():
-            child = self.takeAt(0)
+        while self.layout.count():
+            child = self.layout.takeAt(0)
             if child.widget():
                 child.widget().deleteLater()
     
@@ -57,7 +59,7 @@ class RightMenu(QVBoxLayout):
             self.playlist_widget.addItem(item)
             self.playlist_widget.setItemWidget(item, widget)
 
-        self.addWidget(self.playlist_widget)
+        self.layout.addWidget(self.playlist_widget)
 
     def set_settings(self):
         self.clear_layout()
@@ -71,9 +73,8 @@ class RightMenu(QVBoxLayout):
             mode.setChecked(True)
         mode.stateChanged.connect(lambda state: self.set_app_theme(state == 2))
 
-        
-        self.addWidget(label)
-        self.addWidget(mode)
+        self.layout.addWidget(label)
+        self.layout.addWidget(mode)
 
     def set_app_theme(self, dark_mode: bool):
         app = QApplication.instance()
