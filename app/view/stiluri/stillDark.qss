@@ -1,7 +1,7 @@
 QMainWindow {
     background: url("app/assets/background/sheep-darkMode.png");
     background-position: center;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-color: #0B121E;
 }
 
@@ -17,6 +17,9 @@ QPushButton:hover {
     background-color: #152F42;
 }
 
+QLabel {
+    color: #FFF3D2;
+}
 
 QSlider::groove:horizontal {
     background: rgba(255,255,255,0.25);
@@ -31,54 +34,59 @@ QSlider::handle:horizontal {
     margin: -5px 0;
     border-radius: 9px;
 }
-#MediaToolBar QSlider::groove:horizontal {
-    background: transparent;
-    height: 6px;
-    border-radius: 3px;
-}
 
-#MediaToolBar QSlider::sub-page:horizontal {
-    background: #4E4E5E;     /* partea parcursă */
-    border-radius: 3px;
-}
-
-#MediaToolBar QSlider::add-page:horizontal {
-    background: #0B121E;     /* partea neparcursă */
-    border-radius: 3px;
-}
-
-#MediaToolBar QSlider::handle:horizontal {
-    background: #F3C86F;
-    width: 14px;
-    border-radius: 7px;
-}
-
-QLabel{
-    color:#FFF3D2
-}
-
-QListWidget {
+#PlaylistWidget {
     background-color: #2A2A3A;
-    padding: 5px;
+    padding: 12px;
     margin: 10px;
-    color: #EDEDED;
-
+    border-radius: 16px;
+    border: 2px solid rgba(255,255,255,0.08);
 }
 
-#SongItem QWidget {
+#SongItem {
     background-color: #3A3A4A;
-    border-radius: 15px;
-    padding: 5px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #FFF3D2;
-
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 6px;
 }
 
-#SongItem QWidget:hover {
+#SongItem:hover {
     background-color: #4A4A5A;
 }
 
+#SongItem QLabel {
+    color: #FFF3D2;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#PlaylistWidget QScrollBar:vertical {
+    background: #2A2A3A;
+    width: 12px;
+    margin: 4px;
+    border-radius: 6px;
+}
+
+#PlaylistWidget QScrollBar::handle:vertical {
+    background: #4E4E5E;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+#PlaylistWidget QScrollBar::handle:vertical:hover {
+    background: #5C5C6E;
+}
+
+#PlaylistWidget QScrollBar::add-page:vertical,
+#PlaylistWidget QScrollBar::sub-page:vertical {
+    background: transparent;
+}
+
+#PlaylistWidget QScrollBar::add-line:vertical,
+#PlaylistWidget QScrollBar::sub-line:vertical {
+    height: 0;
+    background: none;
+}
 
 QToolBar {
     background-color: #2A2A3A;
@@ -101,7 +109,6 @@ QToolBar {
     background-color: #6A6A7E;
 }
 
-
 #MediaToolBar QSlider::groove:horizontal {
     background: rgba(255,255,255,0.20);
     height: 6px;
@@ -112,43 +119,4 @@ QToolBar {
     background: #F3C86F;
     width: 14px;
     border-radius: 7px;
-}
-
-#RightMenu QVBoxLayout {
-    border: 20px solid #000000;
-    padding: 20px;
-}
-
-#PlaylistWidget {
-    background-color: #2A2A3A;
-    color: #EDEDED;
-}
-
-/* Scrollbar */
-#PlaylistWidget QScrollBar:vertical {
-    background: #2A2A3A;
-    width: 12px;
-    margin: 2px;
-    border-radius: 6px;
-}
-
-#PlaylistWidget QScrollBar::handle:vertical {
-    background: #4E4E5E;
-    min-height: 20px;
-    border-radius: 6px;
-}
-
-#PlaylistWidget QScrollBar::handle:vertical:hover {
-    background: #5C5C6E;
-}
-
-#PlaylistWidget QScrollBar::add-page:vertical,
-#PlaylistWidget QScrollBar::sub-page:vertical {
-    background: #2A2A3A;
-}
-
-#PlaylistWidget QScrollBar::add-line:vertical,
-#PlaylistWidget QScrollBar::sub-line:vertical {
-    background: none;
-    height: 0;
 }

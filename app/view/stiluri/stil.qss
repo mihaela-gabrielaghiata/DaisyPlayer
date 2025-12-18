@@ -1,12 +1,8 @@
 QMainWindow {
     background: url("app/assets/background/sheep-yellow.png");
     background-position: center;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-color: #FFDDB1;
-}
-#Icon QPushButton{
-    background: url("app/assets/icons/icon.png");
-
 }
 
 QPushButton {
@@ -36,33 +32,36 @@ QSlider::handle:horizontal {
 }
 
 QSlider::sub-page:horizontal {
-    background: rgba(0, 0, 0, 120);  /* culoarea părții pline (partea de la min la valoarea curentă) */
-    border-radius: 4px;
+    background: rgba(0, 0, 0, 120);
 }
 
-QListWidget {
+#PlaylistWidget {
     background-color: #A4D2C9;
-    padding: 5px;
-    margin: 5px;
-
+    padding: 12px;
+    margin: 10px;
+    border-radius: 16px;
+    border: 2px solid rgba(0,0,0,0.08);
 }
 
-#SongItem QWidget {
+#SongItem {
     background-color: #CDEAE5;
-    border-radius: 15px;
-    padding: 5px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #3b2e1f;
-    height:200 px;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 6px;
 }
 
-#SongItem QWidget:hover {
+#SongItem:hover {
     background-color: #B8DCD3;
 }
 
+#SongItem QLabel {
+    color: #3b2e1f;
+    font-size: 15px;
+    font-weight: 600;
+}
+
 QToolBar {
-    background-color:  #A4D2C9;
+    background-color: #A4D2C9;
     border: none;
     padding: 6px;
 }
@@ -73,20 +72,17 @@ QToolBar {
     padding: 6px;
 }
 
-#MediaToolBar QPushButton:hover
-{
-background-color: #FFDAB1;
+#MediaToolBar QPushButton:hover {
+    background-color: #FFDAB1;
 }
 
-#MediaToolBar QPushButton:checked
-{
-background-color: #FEC09B;
+#MediaToolBar QPushButton:checked {
+    background-color: #FEC09B;
 }
 
 #MediaToolBar QSlider::groove:horizontal {
     background: rgba(0,0,0,0.20);
     height: 6px;
-    border-radius: 3px;
 }
 
 #MediaToolBar QSlider::handle:horizontal {
@@ -95,7 +91,31 @@ background-color: #FEC09B;
     border-radius: 7px;
 }
 
-#RightMenu QVBoxLayout {
-    border: 20px solid black;
-    padding: 20px;
+#PlaylistWidget QScrollBar:vertical {
+    background: #A4D2C9;
+    width: 12px;
+    margin: 4px;
+    border-radius: 6px;
 }
+
+#PlaylistWidget QScrollBar::handle:vertical {
+     background: #6FB1A6;
+    min-height: 20px;
+    border-radius: 6px;
+}
+
+#PlaylistWidget QScrollBar::handle:vertical:hover {
+    background: #7AB5AC;
+}
+
+#PlaylistWidget QScrollBar::add-page:vertical,
+#PlaylistWidget QScrollBar::sub-page:vertical {
+    background: transparent;
+}
+
+#PlaylistWidget QScrollBar::add-line:vertical,
+#PlaylistWidget QScrollBar::sub-line:vertical {
+    height: 0;
+    background: none;
+}
+

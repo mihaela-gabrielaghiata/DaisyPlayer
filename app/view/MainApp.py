@@ -12,4 +12,4 @@ class MainApp(QHBoxLayout):
         layout_left = LeftMenu(layout_right)
 
         self.addLayout(layout_left, 1)
-        self.addWidget(layout_right, 4)
+        self.addLayout(layout_right, 4)
