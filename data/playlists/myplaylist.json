@@ -1,8 +1,10 @@
 {
     "name": "MyPlaylist",
-    "song_count": 1,
-    "total_duration": 502,
+    "song_count": 3,
+    "total_duration": 889,
     "songs": [
-        "local_music/Burgundy - Dreams of Tomorrow (freetouse.com).mp3"
+        "local_music/Burgundy - Dreams of Tomorrow (freetouse.com).mp3",
+        "local_music/Popsicles - Without You (freetouse.com).mp3",
+        "local_music/Luke Bergs - Sunlight (freetouse.com).mp3"
     ]
 }

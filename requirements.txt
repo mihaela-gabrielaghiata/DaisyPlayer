@@ -1,4 +1,7 @@
+asarPy==1.0.1
+mutagen==1.47.0
 PySide6==6.10.0
 PySide6_Addons==6.10.0
 PySide6_Essentials==6.10.0
 shiboken6==6.10.0
+yt-dlp==2025.12.8
