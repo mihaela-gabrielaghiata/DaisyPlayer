@@ -4,7 +4,7 @@ from app.view.MainWindow import MainWindow
 
 import os
 os.environ["QT_DEBUG_PLUGINS"] = "1"
-os.environ["QT_MEDIA_BACKEND"] = "ffmpeg"   # dacă ai ffmpeg
+os.environ["QT_MEDIA_BACKEND"] = "ffmpeg"  
 
 
 if __name__ == "__main__":
