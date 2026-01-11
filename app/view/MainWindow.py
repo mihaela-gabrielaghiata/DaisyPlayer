@@ -20,8 +20,8 @@ class MainWindow(QMainWindow):
         height = screen.height()
         self.resize(int(width * 0.85), int(height * 0.85))
 
-        with open('app/view/stiluri/stil.qss','r') as f :
-            qss=f.read()
+        #with open('app/view/stiluri/stil.qss','r') as f :
+        #    qss=f.read()
 
         #self.setStyleSheet(qss)
 

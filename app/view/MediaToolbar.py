@@ -14,6 +14,14 @@ class ClickableSlider(QSlider):
             event.accept()
         super().mousePressEvent(event)
 
+class ClickableLabel(QLabel):
+    clicked = Signal()
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.clicked.emit()
+        super().mousePressEvent(event)
+
 class MediaToolbar(QToolBar):
     def __init__(self, controller=None):
         super().__init__()
@@ -73,7 +81,7 @@ class MediaToolbar(QToolBar):
         self.slider_volume.setTracking(False)
         self.slider_volume.setToolTip("Volume")
 
-        self.music_label = QLabel('')
+        self.music_label = ClickableLabel('')
         self.music_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.music_label.setAlignment(Qt.AlignCenter)
 
@@ -116,6 +124,8 @@ class MediaToolbar(QToolBar):
 
             self.slider.valueChanged.connect(lambda: controller.seek_by_percent(self.slider.value() / self.slider.maximum()))
             self.slider_volume.valueChanged.connect(controller.set_volume)
+
+            self.music_label.clicked.connect(lambda: controller.show_waveform())
 
 
 

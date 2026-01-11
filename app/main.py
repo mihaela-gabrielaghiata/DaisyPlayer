@@ -11,9 +11,9 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     window = MainWindow()
-    with open("app/view/stiluri/stil.qss", "r") as f:
-        app.setStyleSheet(f.read())
 
+    with open("app/view/stiluri/StyleLight.qss", "r") as f:
+        app.setStyleSheet(f.read())
 
     window.show()
 

@@ -1,6 +1,7 @@
 from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
 from PySide6.QtCore import QUrl
 import os
+from yt_dlp import YoutubeDL
 
 
 class PlayerService:
@@ -44,10 +45,14 @@ class PlayerService:
         for file in os.listdir(self.music_path):
             if file.lower().endswith(allowed):
                 full_path = os.path.join(self.music_path, file)
-                self.songs.append((file, full_path))
+                self.songs.append((os.path.basename(file), full_path))
 
     def get_songs(self):
         return self.songs
+    
+    def set_queued_songs(self, s: list):
+        self.queued_songs = s.copy()
+        self.current_song = -1
     
     def get_current_song_metadata(self):
         if self.player.source().isEmpty() == False and self.current_song != -1:
@@ -58,6 +63,7 @@ class PlayerService:
             return self.queued_songs[self.current_song][0]
 
     def play(self, name = None):
+        print(self.queued_songs)
         if name is None:
             if self.player.source().isEmpty() == False:
                 self.player.play()
@@ -129,6 +135,7 @@ class PlayerService:
         self.player.setLoops(QMediaPlayer.Infinite if repeat else QMediaPlayer.Loops(1))
 
     def shuffle_songs(self):
+        self.original_oreder = self.queued_songs.copy()
         import random
         temp = self.queued_songs[self.current_song] if self.current_song != -1 else None
         if temp:
@@ -141,8 +148,37 @@ class PlayerService:
 
     def unshuffle_songs(self):
         temp = self.queued_songs[self.current_song] if self.current_song != -1 else None
-        self.queued_songs = self.songs.copy()
+        self.queued_songs = self.original_oreder.copy()
         if temp:
             self.current_song = self.queued_songs.index(temp)
         else:
             self.current_song = 0
+        
+    def download_song_from_url(self, url: str):
+        #download the song from the url and save it to local_music folder
+        ydl_opts = {
+            'format': 'bestaudio/best',
+            'outtmpl': 'local_music/%(title)s.%(ext)s',  # unde să salvezi
+            'postprocessors': [{
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',  
+                'preferredquality': '192',
+            }],
+        }
+        with YoutubeDL(ydl_opts) as ydl:
+            ydl.download([url])
+
+        self.load_songs()
+        self.queued_songs = self.songs.copy()
+    
+    def delete_song(self, song_path: str):
+        if os.path.exists(song_path):
+            os.remove(song_path)
+        for song, path in self.songs:
+            if path == song_path:
+                self.queued_songs.remove((song, path))
+                break
+        for song, path in self.queued_songs:
+            if path == song_path:
+                self.queued_songs.remove((song, path))
+                break

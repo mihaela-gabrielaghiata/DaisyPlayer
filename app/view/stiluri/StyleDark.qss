@@ -1,0 +1,122 @@
+QMainWindow {
+    background: url("app/assets/background/sheep-darkMode.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #0B121E;
+}
+
+QPushButton {
+    background-color: #0F293C;
+    border-radius: 15px;
+    padding: 10px;
+    font-weight: bold;
+    color: #FFF3D2;
+}
+
+QPushButton:hover {
+    background-color: #152F42;
+}
+
+QLabel {
+    color: #FFF3D2;
+}
+
+QSlider::groove:horizontal {
+    background: rgba(255,255,255,0.25);
+    height: 8px;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background: #F3C86F;
+    width: 18px;
+    height: 18px;
+    margin: -5px 0;
+    border-radius: 9px;
+}
+
+QSlider::sub-page:horizontal {
+    background: rgba(0,0,0,0.70); /* uses handle color #F3C86F with transparency */
+    border-radius: 4px;
+}
+
+
+#RightMenuWidget {
+    background-color: #2A2A3A;
+    padding: 6px;
+    margin: 10px;
+    border-radius: 16px;
+    border: 2px solid rgba(255,255,255,0.08);
+}
+
+#Title {
+    margin: 20px;
+    font-size: 40px;
+}
+
+#SettingsLabel {
+    padding: 10px;
+}
+
+#SettingsCheckbox{
+    
+}
+
+#PlaylistWidget {
+    background-color: #2A2A3A;
+    padding: 12px;
+    margin: 10px;
+    border: none;
+}
+
+#SongItem {
+    background-color: #3A3A4A;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 6px;
+}
+
+#SongItem:hover {
+    background-color: #4A4A5A;
+}
+
+#SongItem QLabel {
+    color: #FFF3D2;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+QToolBar {
+    background-color: #2A2A3A;
+    border: none;
+    padding: 6px;
+}
+
+#MediaToolBar QPushButton {
+    background-color: #4E4E5E;
+    border-radius: 12px;
+    padding: 6px;
+    color: #EDEDED;
+}
+
+#MediaToolBar QPushButton:hover {
+    background-color: #5C5C6E;
+}
+
+#MediaToolBar QPushButton:checked {
+    background-color: #6A6A7E;
+}
+
+#MediaToolBar QSlider::groove:horizontal {
+    background: rgba(255,255,255,0.20);
+    height: 6px;
+}
+
+#MediaToolBar QSlider::handle:horizontal {
+    background: #F3C86F;
+    width: 14px;
+    border-radius: 7px;
+}
+
+

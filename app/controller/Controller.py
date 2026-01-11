@@ -26,6 +26,9 @@ class Controller:
 
     def get_songs(self):
         return self.player_service.get_songs()
+    
+    def set_queued_songs(self, s: list):
+        self.player_service.set_queued_songs(s)
 
     def toggle_play(self):
         self.player_service.toggle_play()
@@ -108,3 +111,41 @@ class Controller:
 
     def get_playlists(self):
         return self.playlist_service.get_playlists()
+    
+    def is_favorite(self, song_name: str) -> bool:
+        return self.playlist_service.is_favorite(song_name)
+    
+    def toggle_favorite(self, song_path: str, add: bool):
+        print(add)
+        if add:
+            self.playlist_service.add_to_favorites(song_path)
+        else:
+            self.playlist_service.remove_from_favorites(song_path)
+    
+    def add_song_to_playlist(self, song_path: str, playlist_name: str):
+        self.playlist_service.add_song_to_playlist(song_path, playlist_name)
+
+    def create_playlist(self, name: str):
+        self.playlist_service.create_playlist(name)
+
+    def delete_playlist(self, name: str):
+        self.playlist_service.delete_playlist(name)
+        
+    def set_right_menu(self, right_menu):
+        self.right_menu = right_menu
+
+    def show_waveform(self):
+        self.right_menu.set_waveform()
+
+    def download_song_from_url(self, url: str):
+        self.player_service.download_song_from_url(url)
+
+    def delete_song(self, song_path: str):
+        print("Deleting song:", song_path)
+        self.player_service.delete_song(song_path)
+        self.right_menu.set_home()
+        self.playlist_service.check_playlists()
+
+    def remove_song_from_playlist(self, song_path: str, playlist_name: str):
+        print("Removing song from playlist:", song_path, "from", playlist_name)
+        self.playlist_service.remove_song_from_playlist(song_path, playlist_name)

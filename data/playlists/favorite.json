@@ -1,12 +1,10 @@
 {
-  "name": "Chill Vibes",
-  "song_count": 5,
-  "total_duration": 30,
-  "songs": [
-    "/music/chill/lofi-sunset.mp3",
-    "/music/chill/deep-focus.mp3",
-    "/music/chill/night-drive.wav",
-    "/music/chill/relax-beats.mp3",
-    "/music/chill/soft-breeze.flac"
-  ]
+    "name": "Favorite",
+    "song_count": 3,
+    "total_duration": 520,
+    "songs": [
+        "local_music/N3X - Tell Me (freetouse.com).mp3",
+        "local_music/Luke Bergs & Markvard - Our Way (freetouse.com).mp3",
+        "local_music/Popsicles - Without You (freetouse.com).mp3"
+    ]
 }
